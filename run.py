@@ -57,12 +57,12 @@ for year in files:
                       'd9', 'inc_decr', 'd10', 'marriage', 'd11', 'd12', 'd13', 'divorce', 'd14', 'd15', 'd16']
         df = df[df.region.isin(regions)]
         df = df[['region', 'birth', 'death', 'death_children', 'inc_decr', 'marriage', 'divorce']]
-        # df.insert(7, "year", year)
+        df.insert(7, "year", year)
         month = f'0{i + 1}' if i < 9 else str(i + 1)
+        df.insert(8, "month", month)
         file = open(f'data/{year}/{month}.csv', mode='w')
         file.close()
         df.to_csv(f'data/{year}/{month}.csv')
-        # df.insert(8, "month", month)
         # records = list(json.loads(df.T.to_json()).values())
         # table.insert_many(records)
 
